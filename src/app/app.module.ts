@@ -1,25 +1,11 @@
-import { NgModule } from '@angular/core'
-import { RouterModule } from '@angular/router';
-import { rootRouterConfig } from './app.routes';
-import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
+import { FormsModule }   from '@angular/forms';
+import { AppComponent }   from './app.component';
+import { ChildComponent }   from './childComponent/child.component';
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: true })
-  ],
-  bootstrap: [ AppComponent ]
+  imports:      [ BrowserModule, FormsModule ],
+  declarations: [ AppComponent, ChildComponent ],
+  bootstrap:    [ AppComponent ]
 })
-export class AppModule {
-
-}
+export class AppModule { }
