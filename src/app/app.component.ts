@@ -1,17 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
-import { ChildComponent} from './childComponent/child.component';
+import { Component} from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `<child-comp></child-comp>
-                <button (click)="increment()">+</button>
-                <button (click)="decrement()">-</button>`
+    template: `<child-comp>
+                    <h3 #headerContent>Добро пожаловать {{name}}!</h3>
+               </child-comp>`
 })
 export class AppComponent {
 
-    @ViewChild(ChildComponent)
-    private counterComponent: ChildComponent;
-
-    increment() { this.counterComponent.increment(); }
-    decrement() { this.counterComponent.decrement(); }
+    name: string = "Tom";
 }
