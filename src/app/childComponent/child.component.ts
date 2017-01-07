@@ -1,19 +1,61 @@
 /**
  * Created by matve on 08.01.2017.
  */
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component,
+    Input,
+    OnInit,
+    DoCheck,
+    OnChanges,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewChecked,
+    AfterViewInit} from '@angular/core';
 
 @Component({
     selector: 'child-comp',
-    template: `<input [ngModel]="userName" (ngModelChange)="onNameChange($event)" />`
+    template: `<p>Привет {{name}}</p>`
 })
-export class ChildComponent{
+export class ChildComponent implements OnInit,
+    DoCheck,
+    OnChanges,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewChecked,
+    AfterViewInit  {
+    @Input() name: string;
+    count:number=1;
 
-    @Input() userName:string;
-    @Output() userNameChange = new EventEmitter<string>();
-    onNameChange(model: string){
+    ngOnInit() {
 
-        this.userName = model;
-        this.userNameChange.emit(model);
+        this.log(`ngOnInit`);
+    }
+    ngOnChanges() {
+
+        this.log(`OnChanges`);
+    }
+    ngDoCheck() {
+
+        this.log(`ngDoCheck`);
+    }
+    ngAfterViewInit() {
+
+        this.log(`ngAfterViewInit`);
+    }
+    ngAfterViewChecked() {
+
+        this.log(`ngAfterViewChecked`);
+    }
+    ngAfterContentInit() {
+
+        this.log(`ngAfterContentInit`);
+    }
+    ngAfterContentChecked() {
+
+        this.log(`ngAfterContentChecked`);
+    }
+
+    private log(msg: string) {
+        console.log(this.count + ". " + msg);
+        this.count++;
     }
 }
